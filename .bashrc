@@ -4,7 +4,7 @@
 shopt -u progcomp
 export PROJ="none"
 export PS1="\n\[\e[1;34m\][\$PROJ]\n\[\e[0m\]\[\e[1;31m\][\w]\[\e[0m\]\n[\h] \$> "
-#export PATH=${HOME}/scripts:${PATH}
+export PATH=${HOME}/scripts:${PATH}
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
