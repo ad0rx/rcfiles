@@ -1,3 +1,4 @@
+vivado*
 scripts
 examples.desktop
 .xsession*
@@ -18,3 +19,11 @@ examples.desktop
 .gitconfig*
 .gitignore~
 .gkrellm2/
+.Xilinx
+.flexlmrc
+.java
+.lesshst
+.oracle_jre_usage
+.selected_editor
+.swt
+tmp
