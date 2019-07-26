@@ -16,4 +16,5 @@ examples.desktop
 .dmrc
 .emacs.d/
 .gitconfig*
+.gitignore~
 .gkrellm2/
