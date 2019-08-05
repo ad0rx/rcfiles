@@ -5,3 +5,6 @@
 
 ;; Change TABS to 2 spaces everywhere
 (global-set-key "\t" (lambda () (interactive) (insert-char 32 2)))
+
+;; Cleanup whitespace before saving buffer
+(add-hook 'before-save-hook 'whitespace-cleanup)
