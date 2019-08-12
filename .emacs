@@ -8,3 +8,6 @@
 
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; Auto fill mode for text buffers
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
