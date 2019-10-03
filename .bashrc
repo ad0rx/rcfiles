@@ -1,5 +1,5 @@
-# .bashrc
- 
+#  .bashrc
+
 # Disable bash_completion because of bug with variable expansion
 shopt -u progcomp
 export PROJ="none"
@@ -25,4 +25,3 @@ alias screen='screen -D -R'
 alias mc='xterm -geometry 138x36+257+140 -e mc'
 alias mail='mail -f ${HOME}/Maildir --'
 alias minicom='sudo minicom -D /dev/ttyUSB1'
-
