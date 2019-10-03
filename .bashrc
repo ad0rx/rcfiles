@@ -1,4 +1,4 @@
-#  .bashrc
+# .bashrc
 
 # Disable bash_completion because of bug with variable expansion
 shopt -u progcomp
