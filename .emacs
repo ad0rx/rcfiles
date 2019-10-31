@@ -9,5 +9,14 @@
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
-;; Auto fill mode for text buffers
+;; Auto fill mode for text bufferse
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; Put backup files in a sane place
+(cond
+ ((string-equal system-type "windows-nt")
+  (progn
+    (setq backup-directory-alist `(("." . "C:\\emacs_backups\\")))))
+ (t
+  (progn
+    (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))))))
