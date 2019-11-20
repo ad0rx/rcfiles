@@ -3,14 +3,18 @@
 
 (setq default-buffer-file-coding-system 'utf-8-unix)
 
-;; Change TABS to 2 spaces everywhere
-(global-set-key "\t" (lambda () (interactive) (insert-char 32 2)))
+;; Use spaces for indentation and no TAB characters
+(add-hook 'find-file (lambda () (interactive) (setq indent-tabs-mode nil)))
 
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
-;; Auto fill mode for text bufferse
+;; Auto fill mode for text buffers
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+;; Line and column numbers
+(global-linum-mode)
+(setq column-number-mode t)
 
 ;; Put backup files in a sane place
 (cond
