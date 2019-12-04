@@ -20,7 +20,10 @@
 (cond
  ((string-equal system-type "windows-nt")
   (progn
-    (setq backup-directory-alist `(("." . "C:\\emacs_backups\\")))))
+    (setq backup-directory-alist `(("." . "C:\\emacs_backups\\")))
+    (setq auto-save-file-name-transforms
+	  `((".*" ,"C:/emacs_backups/emacs-auto-saves/" t)))
+    ))
  (t
   (progn
-    (setq backup-directory-alist `(("." . "~/.emacs.d/backups"))))))
+    (setq backup-directory-alist `(("." . "~/.emacs.d/backups/"))))))
