@@ -4,7 +4,8 @@
 (setq default-buffer-file-coding-system 'utf-8-unix)
 
 ;; Use spaces for indentation and no TAB characters
-(add-hook 'find-file (lambda () (interactive) (setq indent-tabs-mode nil)))
+(setq-default indent-tabs-mode nil)
+;;(add-hook 'find-file (lambda () (interactive) (setq indent-tabs-mode nil)))
 
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
