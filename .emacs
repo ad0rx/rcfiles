@@ -23,7 +23,7 @@
   (progn
     (setq backup-directory-alist `(("." . "C:\\emacs_backups\\")))
     (setq auto-save-file-name-transforms
-	  `((".*" ,"C:/emacs_backups/emacs-auto-saves/" t)))
+          `((".*" ,"C:/emacs_backups/emacs-auto-saves/" t)))
     ))
  (t
   (progn
@@ -32,7 +32,7 @@
 ;; Beginnings of align-to-char reimplementation
 (defun align-to-str (s)
   "Align occurances of String to the same column in region"
-  (interactive "MString: ")
+  (interactive "sString: ")
 
   ;; Save current point, auto-restored after inner forms exec
   (save-excursion
@@ -40,7 +40,7 @@
   (setq l-points (list))
 
   ;; Determine if string exists on current line
-  (while (setq doline (search-forward "=" (line-end-position) t))
+  (while (setq doline (search-forward s (line-end-position) t))
 
     ;; Move point to beginning of str
     (search-backward s)
@@ -51,7 +51,7 @@
     ;; Track max-column
     (setq l-current-column (current-column))
     (if (> l-current-column max-column)
-	(setq max-column l-current-column)
+        (setq max-column l-current-column)
       nil
       )
 
