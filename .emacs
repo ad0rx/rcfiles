@@ -31,7 +31,7 @@
     (setq backup-directory-alist (list (cons "." backups-path )) )
 
     ;; Auto save location
-    (setq auto-saves (concat user-profile "\\.emacs.d\\auto-saves"))
+    (setq auto-saves (concat user-profile "\\.emacs.d\\auto-saves\\"))
     (setq auto-saves (expand-file-name auto-saves))
     (make-directory auto-saves t)
     (setq auto-save-file-name-transforms
