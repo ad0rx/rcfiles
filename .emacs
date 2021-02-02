@@ -21,9 +21,22 @@
 (cond
  ((string-equal system-type "windows-nt")
   (progn
-    (setq backup-directory-alist `(("." . "C:\\emacs_backups\\")))
+
+    ;; Get the USERPROFILE Env Variable and use that for path to
+    ;; emacs backups
+    (setq user-profile (getenv "USERPROFILE"))
+    (setq backups-path (concat user-profile "\\.emacs.d\\backups"))
+    (setq backups-path (expand-file-name backups-path))
+    (make-directory backups-path t)
+    (setq backup-directory-alist (list (cons "." backups-path )) )
+
+    ;; Auto save location
+    (setq auto-saves (concat user-profile "\\.emacs.d\\auto-saves"))
+    (setq auto-saves (expand-file-name auto-saves))
+    (make-directory auto-saves t)
     (setq auto-save-file-name-transforms
-          `((".*" ,"C:/emacs_backups/emacs-auto-saves/" t)))
+          `((".*" , auto-saves t)))
+
     ))
  (t
   (progn
