@@ -109,5 +109,6 @@
   ;; Place desired buffers in desired window
   (set-window-buffer leftWindow agendab)
   (set-window-buffer rightWindow notes.busDefenderb)
-
+  ;;(toggle-frame-fullscreen)
+  (toggle-frame-maximized)
   )
