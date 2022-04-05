@@ -1,6 +1,5 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (setq inhibit-startup-message t)
-
 (setq default-buffer-file-coding-system 'utf-8-unix)
 
 ;; Use spaces for indentation and no TAB characters
@@ -84,4 +83,24 @@
     (setq l-points (cdr l-points)))
 
   ) ;; end save excursion
+  )
+
+;; Flyspell Support from exwinports
+;; https://sourceforge.net/projects/ezwinports/files/hunspell-1.3.2-3-w32-bin.zip/
+;;(setq ispell-program-name "C:/hunspell/bin/hunspell.exe")
+
+;; Open Notes on Plap
+;; TODO create two windows first and specify where to load org-agenda-list
+;; want it on the left pane
+(defun pstart ()
+  "Open Org Files for work"
+  (interactive)
+  (find-file "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
+  (split-window nil nil 'right)
+  (find-file-other-window "/plink:bwhitlock@plap#65534:~/notes.org")
+  (org-agenda-list)
+  (setq org-buffer (get-buffer (current-buffer)))
+  (switch-to-buffer nil)
+  (other-window 1)
+  (switch-to-buffer org-buffer)
   )
