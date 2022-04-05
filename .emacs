@@ -94,9 +94,13 @@
   "Open Org Files and Agenda for work"
   (interactive)
 
+  (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
+  (setq notes.peraton     "/plink:bwhitlock@plap#65534:~/notes.org")
+  (setq org-agenda-files (list notes.busDefender notes.peraton))
+
   ;; Create buffers
-  (setq notes.busDefenderb (find-file-noselect "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org"))
-  (setq notes.peratonb     (find-file-noselect "/plink:bwhitlock@plap#65534:~/notes.org"))
+  (setq notes.busDefenderb (find-file-noselect notes.busDefender))
+  (setq notes.peratonb     (find-file-noselect notes.peraton))
   (org-agenda-list)
   (setq agendab (get-buffer (current-buffer)))
   (delete-window nil)
@@ -109,6 +113,7 @@
   ;; Place desired buffers in desired window
   (set-window-buffer leftWindow agendab)
   (set-window-buffer rightWindow notes.busDefenderb)
+
   ;;(toggle-frame-fullscreen)
   (toggle-frame-maximized)
   )
