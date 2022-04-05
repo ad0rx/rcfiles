@@ -90,17 +90,24 @@
 ;;(setq ispell-program-name "C:/hunspell/bin/hunspell.exe")
 
 ;; Open Notes on Plap
-;; TODO create two windows first and specify where to load org-agenda-list
-;; want it on the left pane
 (defun pstart ()
-  "Open Org Files for work"
+  "Open Org Files and Agenda for work"
   (interactive)
-  (find-file "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
-  (split-window nil nil 'right)
-  (find-file-other-window "/plink:bwhitlock@plap#65534:~/notes.org")
+
+  ;; Create buffers
+  (setq notes.busDefenderb (find-file-noselect "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org"))
+  (setq notes.peratonb     (find-file-noselect "/plink:bwhitlock@plap#65534:~/notes.org"))
   (org-agenda-list)
-  (setq org-buffer (get-buffer (current-buffer)))
-  (switch-to-buffer nil)
-  (other-window 1)
-  (switch-to-buffer org-buffer)
+  (setq agendab (get-buffer (current-buffer)))
+  (delete-window nil)
+
+  ;; Create two windows side by side, how to name them?
+  (setq leftWindow (selected-window))
+  (split-window nil nil 'right)
+  (setq rightWindow (window-in-direction 'right))
+
+  ;; Place desired buffers in desired window
+  (set-window-buffer leftWindow agendab)
+  (set-window-buffer rightWindow notes.busDefenderb)
+
   )
