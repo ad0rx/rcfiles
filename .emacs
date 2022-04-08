@@ -94,8 +94,21 @@
   "Open Org Files and Agenda for work"
   (interactive)
 
-  (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
-  (setq notes.peraton     "/plink:bwhitlock@plap#65534:~/notes.org")
+  ;; If we are on a windows machine, add plink / tramp support to file URL
+  ;; todo change to generate a prefix depending on system-name and append
+  ;; prefix as needed ssh: or plink:
+  (cond
+   ((string-equal system-name "bwhitlock-7420")
+    (progn
+      (setq notes.busDefender "~/bus_defender/notes.org")
+      (setq notes.peraton     "~/notes.org")
+      ))
+   (t
+    (progn
+      (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
+      (setq notes.peraton     "/plink:bwhitlock@plap#65534:~/notes.org")
+      )))
+
   (setq org-agenda-files (list notes.busDefender notes.peraton))
 
   ;; Create buffers
