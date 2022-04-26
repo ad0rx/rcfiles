@@ -1,5 +1,21 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(tsdh-dark))
+;; '(org-agenda-files '("~/bus_defender/notes.org" "~/notes.org"))
+ '(org-enforce-todo-dependencies t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 144 :width normal)))))
+
 (put 'dired-find-alternate-file 'disabled nil)
 (setq inhibit-startup-message t)
+
 (setq default-buffer-file-coding-system 'utf-8-unix)
 
 ;; Use spaces for indentation and no TAB characters
@@ -85,27 +101,25 @@
   ) ;; end save excursion
   )
 
-;; Flyspell Support from exwinports
-;; https://sourceforge.net/projects/ezwinports/files/hunspell-1.3.2-3-w32-bin.zip/
-;;(setq ispell-program-name "C:/hunspell/bin/hunspell.exe")
-
 ;; Open Notes on Plap
 (defun pstart ()
   "Open Org Files and Agenda for work"
   (interactive)
 
+
+
   ;; If we are on a windows machine, add plink / tramp support to file URL
-  ;; todo change to generate a prefix depending on system-name and append
-  ;; prefix as needed ssh: or plink:
   (cond
    ((string-equal system-name "bwhitlock-7420")
     (progn
       (setq notes.busDefender "~/bus_defender/notes.org")
+      (setq notes.busDefender "~/bus_defender/minimum_mercury.org")
       (setq notes.peraton     "~/notes.org")
       ))
    (t
     (progn
       (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
+      (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/minimum_mercury.org")
       (setq notes.peraton     "/plink:bwhitlock@plap#65534:~/notes.org")
       )))
 
