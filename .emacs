@@ -113,17 +113,17 @@
    ((string-equal system-name "bwhitlock-7420")
     (progn
       (setq notes.busDefender "~/bus_defender/notes.org")
-      (setq notes.busDefender "~/bus_defender/minimum_mercury.org")
+      (setq notes.mercury     "~/bus_defender/minimum_mercury.org")
       (setq notes.peraton     "~/notes.org")
       ))
    (t
     (progn
       (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
-      (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/minimum_mercury.org")
+      (setq notes.mercury     "/plink:bwhitlock@plap#65534:~/bus_defender/minimum_mercury.org")
       (setq notes.peraton     "/plink:bwhitlock@plap#65534:~/notes.org")
       )))
 
-  (setq org-agenda-files (list notes.busDefender notes.peraton))
+  (setq org-agenda-files (list notes.busDefender notes.peraton notes.mercury))
 
   ;; Create buffers
   (setq notes.busDefenderb (find-file-noselect notes.busDefender))
