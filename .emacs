@@ -4,7 +4,12 @@
 
 ;; Use spaces for indentation and no TAB characters
 (setq-default indent-tabs-mode nil)
-;;(add-hook 'find-file (lambda () (interactive) (setq indent-tabs-mode nil)))
+
+;; Add more space between lines
+(setq-default line-spacing 6)
+
+;; Improve org mode looks
+(setq org-startup-indented t)
 
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
