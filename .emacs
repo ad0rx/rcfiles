@@ -25,7 +25,7 @@
 (setq-default line-spacing 6)
 
 ;; Improve org mode looks
-(setq org-startup-indented t)
+;; (setq org-startup-indented t)
 
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
