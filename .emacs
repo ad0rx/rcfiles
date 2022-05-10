@@ -120,7 +120,7 @@
 
   ;; List of notes files
   ;; The last element will be displayed in right pane
-  (setq l_notes_files (list "~/bus_defender/notes.org" "~/notes.org" "~/bus_defender/minimum_mercury.org"))
+  (setq l_notes_files (list "~/bus_defender/notes.org" "~/notes.org" "~/bus_defender/mercury.org"))
 
   ;; If we are on a windows machine, add plink / tramp support to file URL
   (cond
@@ -135,7 +135,6 @@
       (setq l_notes_files (mapcar 'add_plink_url l_notes_files))
       )))
 
-  ;;(setq org-agenda-files (list notes.busDefender notes.peraton notes.mercury))
   (setq org-agenda-files l_notes_files)
 
   ;; Create buffers
