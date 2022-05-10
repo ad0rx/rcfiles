@@ -106,33 +106,44 @@
   ) ;; end save excursion
   )
 
+;; Support for pstart
+;; Mapping function to add tramp / plink to notes file path
+(defun add_plink_url (s)
+  "Add URL to the front of string, used to open files on remote host"
+  (print (concat "/plink:bwhitlock@plap#65534:" s))
+  )
+
 ;; Open Notes on Plap
 (defun pstart ()
   "Open Org Files and Agenda for work"
   (interactive)
 
-
+  ;; List of notes files
+  ;; The last element will be displayed in right pane
+  (setq l_notes_files (list "~/bus_defender/notes.org" "~/notes.org" "~/bus_defender/minimum_mercury.org"))
 
   ;; If we are on a windows machine, add plink / tramp support to file URL
   (cond
    ((string-equal system-name "bwhitlock-7420")
     (progn
-      (setq notes.busDefender "~/bus_defender/notes.org")
-      (setq notes.mercury     "~/bus_defender/minimum_mercury.org")
-      (setq notes.peraton     "~/notes.org")
       ))
    (t
     (progn
-      (setq notes.busDefender "/plink:bwhitlock@plap#65534:~/bus_defender/notes.org")
-      (setq notes.mercury     "/plink:bwhitlock@plap#65534:~/bus_defender/minimum_mercury.org")
-      (setq notes.peraton     "/plink:bwhitlock@plap#65534:~/notes.org")
+
+      ;; modify each entry in the list to have
+      ;; '/plink:bwhitlock@plap#65534:' preceding the file name
+      (setq l_notes_files (mapcar 'add_plink_url l_notes_files))
       )))
 
-  (setq org-agenda-files (list notes.busDefender notes.peraton notes.mercury))
+  ;;(setq org-agenda-files (list notes.busDefender notes.peraton notes.mercury))
+  (setq org-agenda-files l_notes_files)
 
   ;; Create buffers
-  (setq notes.busDefenderb (find-file-noselect notes.busDefender))
-  (setq notes.peratonb     (find-file-noselect notes.peraton))
+  (setq l_buffers '())
+  (dolist (elt l_notes_files)
+    (push (find-file-noselect elt) l_buffers)
+    )
+  (print l_buffers)
   (org-agenda-list)
   (setq agendab (get-buffer (current-buffer)))
   (delete-window nil)
@@ -144,7 +155,7 @@
 
   ;; Place desired buffers in desired window
   (set-window-buffer leftWindow agendab)
-  (set-window-buffer rightWindow notes.busDefenderb)
+  (set-window-buffer rightWindow (car l_buffers))
 
   ;;(toggle-frame-fullscreen)
   (toggle-frame-maximized)
