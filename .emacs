@@ -27,6 +27,10 @@
 ;; Improve org mode looks
 ;; (setq org-startup-indented t)
 
+;; Add refile targets for capture mode to include org-agenda-files
+(setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                 (org-agenda-files :maxlevel . 9))))
+
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
