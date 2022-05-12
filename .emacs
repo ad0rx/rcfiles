@@ -36,6 +36,10 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-c c") #'org-capture)
 
+;; Tuning the refile command
+(setq org-refile-use-outline-path t)
+(setq org-outline-path-complete-in-steps t)
+
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
