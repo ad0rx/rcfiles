@@ -40,6 +40,16 @@
 (setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps t)
 
+;; Configure State Kewords
+;; C-c C-t t would set to TODO using
+;; 'Fast Access to TODO States'
+(setq org-todo-keywords
+      '(
+        (sequence "TODO(t)" "WAITING" "NEXT" "|" "DONE(d)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)")
+        ))
+
 ;; Cleanup whitespace before saving buffer
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
