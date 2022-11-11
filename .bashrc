@@ -50,8 +50,11 @@ alias pa='while popd -n; do next; done &> /dev/null'
 alias sec='pushd ${SEC}'
 alias bdf='pushd ${BDF}'
 
-alias dkr='docker exec -it $(docker ps -a | grep -oe '^[0-9a-z]*') bash'
+#alias dkr='docker exec -it $(docker ps -a | grep -oe '^[0-9a-z]*') bash'
+alias dkr='docker exec -it $(docker ps -a | grep none | grep -oe '^[0-9a-z]*') bash'
 
 alias gs='git status'
 alias gc='git commit'
 alias gl='git log --raw'
+
+alias xt='xterm -fa \"Monospace\" -fs 14'
