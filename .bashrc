@@ -1,6 +1,6 @@
 # .bashrc
 
-export HOME=/home/bwhitlock/03_peraton_laptop
+#export HOME=/home/bwhitlock/03_peraton_laptop
 
 # Disable bash_completion because of bug with variable expansion
 shopt -u progcomp
@@ -24,11 +24,6 @@ HISTFILESIZE=-1
 TZ='America/New_York'; export TZ
 #TZ='America/Denver'; export TZ
 
-# Put a copy of the DISPLAY variable into a file so that I can more
-# easily determine the current value of this variable from screen
-# sessions which may span multiple PuTTY sessions from different hosts
-echo ${DISPLAY} > ${HOME}/display
-
 # Project Setup
 #export COMMON_DIR=/projects/common
 #source ${COMMON_DIR}/bin/common_lib.sh
@@ -40,15 +35,12 @@ alias screen='screen -h 10000 -D -R'
 #alias mail='mail -f ${HOME}/Maildir --'
 #alias minicom='sudo minicom -D /dev/ttyUSB1'
 
-alias bd='source ${HOME}/busdefender_env'
+alias bd='source ${HOME}/projects/bus_defender/bus_defender_env'
 
 alias pws='pushd ${PWS}'
 alias pd='popd'
 alias cd='pushd'
 alias pa='while popd -n; do next; done &> /dev/null'
-
-alias sec='pushd ${SEC}'
-alias bdf='pushd ${BDF}'
 
 #alias dkr='docker exec -it $(docker ps -a | grep -oe '^[0-9a-z]*') bash'
 alias dkr='docker exec -it $(docker ps -a | grep none | grep -oe '^[0-9a-z]*') bash'
