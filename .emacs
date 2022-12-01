@@ -136,7 +136,7 @@
 ;; Mapping function to add tramp / plink to notes file path
 (defun add_plink_url (s)
   "Add URL to the front of string, used to open files on remote host"
-  (print (concat "/plink:bwhitlock@plap#65534:" s))
+  (print (concat "/plink:brad@latitude#65534:" s))
   )
 
 ;; Open Notes on Plap
