@@ -6,7 +6,7 @@
  '(column-number-mode t)
  '(custom-enabled-themes '(tsdh-dark))
  '(org-agenda-files
-   '("~/.notes" "~/bus_defender/notes.org" "~/notes.org" "~/bus_defender/mercury.org"))
+   '("~/.notes" "~/Documents/orgs/bus_defender.org" "~/Documents/orgs/personal.org" "~/Documents/orgs/mercury.org"))
  '(org-enforce-todo-dependencies t))
 
 (custom-set-faces
@@ -146,15 +146,16 @@
 
   ;; List of notes files
   ;; The last element will be displayed in right pane
-  (setq l_notes_files (list "~/orgs/personal.org"
+  (setq l_notes_files (list "~/Documents/orgs/personal.org"
+                            "~/Documents/docker/docker.org"
                             "~/.notes"
-                            "~/bus_defender/notes.org"
-                            "~/notes.org"
-                            "~/bus_defender/mercury.org"))
+                            "~/Documents/orgs/bus_defender.org"
+                            "~/Documents/orgs/peraton.org"
+                            "~/Documents/orgs/mercury.org"))
 
   ;; If we are on a windows machine, add plink / tramp support to file URL
   (cond
-   ((string-equal system-name "bwhitlock-7420")
+   ((string-equal system-name "latitude")
     (progn
       ))
    (t
@@ -190,5 +191,4 @@
   (toggle-frame-maximized)
   )
 
-(setq default-directory "/home/bwhitlock/03_peraton_laptop/bus_defender/bdmca/FPGA/security")
 (setq verilog-auto-newline nil)
