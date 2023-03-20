@@ -139,6 +139,13 @@
   (print (concat "/plink:brad@latitude#65534:" s))
   )
 
+;; Support for pstart
+;; Mapping function to add local file path on windows machine
+(defun add_fletcher_path (s)
+  "Add local path to front of file path"
+  (print (concat "W:/large-files/01_standard_storage/peraton/" s))
+  )
+
 ;; Open Notes on Plap
 (defun pstart ()
   "Open Org Files and Agenda for work"
@@ -146,12 +153,12 @@
 
   ;; List of notes files
   ;; The last element will be displayed in right pane
-  (setq l_notes_files (list "~/Documents/orgs/personal.org"
-                            "~/Documents/docker/docker.org"
-                            "~/.notes"
-                            "~/Documents/orgs/bus_defender.org"
-                            "~/Documents/orgs/peraton.org"
-                            "~/Documents/orgs/mercury.org"))
+  (setq l_notes_files (list "Documents/orgs/personal.org"
+                            ;;"Documents/docker/docker.org"
+                            ;;".notes"
+                            "Documents/orgs/bus_defender.org"
+                            "Documents/orgs/peraton.org"
+                            "Documents/orgs/mercury.org"))
 
   ;; If we are on a windows machine, add plink / tramp support to file URL
   (cond
@@ -163,7 +170,8 @@
 
       ;; modify each entry in the list to have
       ;; '/plink:bwhitlock@plap#65534:' preceding the file name
-      (setq l_notes_files (mapcar 'add_plink_url l_notes_files))
+      ;;(setq l_notes_files (mapcar 'add_plink_url l_notes_files))
+      (setq l_notes_files (mapcar 'add_fletcher_path l_notes_files))
       )))
 
   (setq org-agenda-files l_notes_files)
@@ -192,3 +200,14 @@
   )
 
 (setq verilog-auto-newline nil)
+;;(add-to-list 'default-frame-alist '(height . 24))
+;;(add-to-list 'default-frame-alist '(width . 80))
+
+(setq default-frame-alist
+       '((height . 24)
+         (width . 80)
+         (left . 0)
+         (top . 0)
+         (vertical-scroll-bars . nil)
+         (horizontal-scroll-bars . nil)
+         (tool-bar-lines . 0)))
