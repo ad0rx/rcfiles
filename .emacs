@@ -192,3 +192,17 @@
   )
 
 (setq verilog-auto-newline nil)
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
+
+;; Auto git commit when save org buffer
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (add-hook 'after-save-hook (lambda () (save-excursion (compile "make"))) nil 't)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook
+                      (lambda ()
+                        (save-excursion
+                          (call-process-shell-command "make -k")
+                          )) nil 't)))

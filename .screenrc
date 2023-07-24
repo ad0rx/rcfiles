@@ -1,6 +1,6 @@
 startup_message off
 hardstatus on
 hardstatus alwayslastline
-hardstatus string "%w%=%m/%d %c"
+hardstatus string "%S %w%=%m/%d %c"
 
 termcapinfo xterm* ti@:te@
