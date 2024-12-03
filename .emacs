@@ -191,18 +191,38 @@
   (toggle-frame-maximized)
   )
 
+;; Verilog Mode Tweaks
 (setq verilog-auto-newline nil)
+(defun verilog-indent-untabify ()
+  "Run Verilog batch indent on the buffer and remove TABS"
+  (verilog-indent-buffer)
+  (untabify (point-min) (point-max))
+  )
+
+(add-hook 'verilog-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'verilog-indent-untabify nil 'local)))
+;; End Verilog Mode Tweaks
+
+
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
 
-;; Auto git commit when save org buffer
-;; (add-hook 'org-mode-hook
-;;           (lambda ()
-;;             (add-hook 'after-save-hook (lambda () (save-excursion (compile "make"))) nil 't)))
+;; Auto git commit when save org buffer ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun org-is-scrum ()
+ (setq s "scrum")
+ (setq b (buffer-file-name))
+ (if (eql nil (string-match s b))
+    f
+    t)
+)
+
 (add-hook 'org-mode-hook
           (lambda ()
             (add-hook 'after-save-hook
                       (lambda ()
                         (save-excursion
-                          (call-process-shell-command "make -k")
+                          (unless (org-is-scrum)
+                            (call-process-shell-command "make -k"))
                           )) nil 't)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
